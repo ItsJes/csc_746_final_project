@@ -20,5 +20,11 @@ target_compile_features(benchmark PRIVATE cxx_std_11)
 
 add_executable(benchmark-basic quicksort-basic.cpp)
 add_executable(benchmark-openmp quicksort-openmp.cpp)
+target_link_libraries(benchmark-openmp PRIVATE benchmark ${BLAS_LIBRARIES})
+target_link_options(benchmark-openmp PRIVATE -fopenmp)
+target_compile_features(benchmark-openmp PRIVATE c_std_11 c_restrict)
+target_compile_options(benchmark-openmp PRIVATE -fopenmp -Wall -pedantic -march=native)
+set(BENCHMARK "openmp")
+configure_file(job.in job-${BENCHMARK})
 
 
