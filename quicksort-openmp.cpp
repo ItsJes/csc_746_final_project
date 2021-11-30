@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <omp.h>
-#include <partition.h>
 #include <algorithm>
 #include <chrono>
 #include <iomanip>
@@ -10,7 +9,6 @@
 #include <random>
 #include <vector>
 #include <cmath> // For: fabs
-
 #include <cblas.h>
 
 
@@ -30,12 +28,15 @@ using namespace std;
     *b = t;
 }
 
-int Partition(vector<int> &v, int low, int high){
+int Partition(vector<int> &v, int low, int high)
+{
 	
 	int pivot = high;
 	int j = low;
-	for(int i = low;i < high; ++i){
-		if(v[i] < v[pivot]){
+	for(int i = low;i < high; ++i)
+    {
+		if(v[i] < v[pivot])
+        {
 			swap(v[i], v[j]);
 			++j;
 		}
@@ -47,14 +48,16 @@ int Partition(vector<int> &v, int low, int high){
 
 void printArray(vector<int> &vec, int size) 
 { 
-    for (int i = 0; i < size; i++) 
+    for (int i = 0; i < size; i++)
+    {
         cout << vec[i] << " "; 
+    }
     cout << endl; 
 } 
 
 void quickSortOMP(vector<int> &vec, int low, int high)
 {
-      #pragma omp parallel
+   #pragma omp parallel
    {
       int nthreads = omp_get_num_threads();
       int thread_id = omp_get_thread_num();
@@ -64,12 +67,15 @@ void quickSortOMP(vector<int> &vec, int low, int high)
     if (low < high)
     {
         int index = Partition(vec, low, high);
-        #pragma omp parallel sections{
-           #pragma omp section{
+        #pragma omp parallel sections
+        {
+           #pragma omp section
+           {
             quickSortOMP(vec, low, index - 1);
            }
-           #pragma omp section{
-            quickSortOMP(vec, index + 1, high);
+           #pragma omp section
+           {
+            quickSortOMP(v, index + 1, high);
            }
         }
     }
@@ -78,8 +84,9 @@ void quickSortOMP(vector<int> &vec, int low, int high)
 
 void printArray(vector<int> &vec, int size) 
 { 
-    for (int i = 0; i < size; i++) 
-        cout << vec[i] << " "; 
+    for (int i = 0; i < size; i++){
+        cout << vec[i] << " ";
+    } 
     cout << endl; 
 } 
 
