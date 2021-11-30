@@ -15,11 +15,9 @@ if (NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
 endif ()
 
 # Common library target for benchmarking.
-add_library(benchmark OBJECT benchmark.cpp)
-target_compile_features(benchmark PRIVATE cxx_std_11)
 
-add_executable(quicksort-basic.cpp)
-add_executable(quicksort-openmp.cpp)
-configure_file(job.in job-${BENCHMARK})
+add_executable(quicksort-basic quicksort-basic.cpp)
+add_executable(quicksort-openmp quicksort-openmp.cpp)
+
 
 
