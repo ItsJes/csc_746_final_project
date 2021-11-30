@@ -66,7 +66,7 @@ int main(int argc, char** argv)
 
     //std::vector<int> test_sizes{64, 128, 256, 512, 1024, 2048};
    // std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
-    std::vector<int> test_sizes{16384000000};
+    std::vector<int> test_sizes{16384};
 
     int n_problems = test_sizes.size();
 
@@ -79,11 +79,11 @@ int main(int argc, char** argv)
 
            // load up matrics with some random numbers
     /* For each test size */
-    std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
 
     for (int n : test_sizes) 
     {
         printf("Working on problem size N=%d \n", n);
+        std::cout << std::fixed << std::setprecision(10);
 
         std::vector<unsigned long long> vec(n,0);
   
