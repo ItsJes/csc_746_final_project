@@ -106,12 +106,11 @@ int main(int argc, char** argv)
 
     // allocate memory for 2 NxN matrices and 4 Nx1 vectors
 
-    int max_size = test_sizes[n_problems-1];
+    //int max_size = test_sizes[n_problems-1];
 
 
            // load up matrics with some random numbers
     /* For each test size */
-    std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
 
     for (int n : test_sizes) 
     {
@@ -132,7 +131,7 @@ int main(int argc, char** argv)
 
         std::chrono::duration<double> elapsed = end_time - start_time;
         std::cout << " Vector Sort: " << std::endl;
-        printArray(vec, n - 1);
+       // printArray(vec, n - 1);
         std::cout << " Elapsed time is: " << elapsed.count() << " " << std::endl;
     
     } // end loop over problem sizes
