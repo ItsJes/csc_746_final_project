@@ -12,8 +12,6 @@
 #include <iostream>
 #include <random>
 #include <vector>
-#include <quicksort-openmp.cpp>
-#include <quicksort-basic.cpp>
 
 #include <cmath> // For: fabs
 
