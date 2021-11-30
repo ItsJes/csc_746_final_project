@@ -66,7 +66,7 @@ int main(int argc, char** argv)
 
     //std::vector<int> test_sizes{64, 128, 256, 512, 1024, 2048};
    // std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
-    std::vector<int> test_sizes{5};
+    std::vector<int> test_sizes{16384};
 
     int n_problems = test_sizes.size();
 
@@ -90,7 +90,7 @@ int main(int argc, char** argv)
         srand(time(0));
   
         generate(vec.begin(), vec.end(), rand);
-        printArray(vec, n - 1);
+       // printArray(vec, n - 1);
 
         // insert start timer code here
         std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
@@ -101,7 +101,7 @@ int main(int argc, char** argv)
 
         std::chrono::duration<double> elapsed = end_time - start_time;
         std::cout << " Vector Sort: " << std::endl;
-        printArray(vec, n - 1);
+       // printArray(vec, n - 1);
         std::cout << " Elapsed time is: " << elapsed.count() << " " << std::endl;
     
     } // end loop over problem sizes
