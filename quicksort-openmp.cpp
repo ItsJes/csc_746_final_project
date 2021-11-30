@@ -122,7 +122,7 @@ int main(int argc, char** argv)
         // insert start timer code here
         std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
 
-        quickSort(vec, 0, n - 1);
+        quickSortOMP(vec, 0, n - 1);
 
         std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
 
