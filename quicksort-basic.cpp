@@ -26,7 +26,7 @@ using namespace std;
     *b = t;
 }
 
-int Partition(vector<int> &v, int low, int high){
+int Partition(vector<unsigned long long> &v, int low, int high){
 	
 	int pivot = high;
 	int j = low;
@@ -41,7 +41,7 @@ int Partition(vector<int> &v, int low, int high){
 	
 }
  
-void quickSort(vector<int> &v, int low, int high)
+void quickSort(vector<unsigned long long> &v, int low, int high)
 {
     if (low < high)
     {
@@ -50,7 +50,7 @@ void quickSort(vector<int> &v, int low, int high)
         quickSort(v, index + 1, high);
     }
 }
-void printArray(vector<int> &v, int size) 
+void printArray(vector<unsigned long long> &v, int size) 
 { 
     for (int i = 0; i < size; i++) 
         cout << v[i] << " "; 

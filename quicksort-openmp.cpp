@@ -28,7 +28,7 @@ using namespace std;
     *b = t;
 }
 
-int Partition(vector<int> &v, int low, int high)
+int Partition(vector<unsigned long long> &v, int low, int high)
 {
 	
 	int pivot = high;
@@ -46,16 +46,16 @@ int Partition(vector<int> &v, int low, int high)
 	
 }
 
-void printArray(vector<int> &vec, int size) 
+void printArray(vector<unsigned long long> &v, int size) 
 { 
     for (int i = 0; i < size; i++)
     {
-        cout << vec[i] << " "; 
+        cout << v[i] << " "; 
     }
     cout << endl; 
 } 
 
-void quickSortOMP(vector<int> &vec, int low, int high)
+void quickSortOMP(vector<unsigned long long> &v, int low, int high)
 {
    #pragma omp parallel
    {
@@ -66,12 +66,12 @@ void quickSortOMP(vector<int> &vec, int low, int high)
    
     if (low < high)
     {
-        int index = Partition(vec, low, high);
+        int index = Partition(v, low, high);
         #pragma omp parallel sections
         {
            #pragma omp section
            {
-            quickSortOMP(vec, low, index - 1);
+            quickSortOMP(v, low, index - 1);
            }
            #pragma omp section
            {
@@ -82,10 +82,10 @@ void quickSortOMP(vector<int> &vec, int low, int high)
    
 }
 
-void printArray(vector<int> &vec, int size) 
+void printArray(vector<int> &v, int size) 
 { 
     for (int i = 0; i < size; i++){
-        cout << vec[i] << " ";
+        cout << v[i] << " ";
     } 
     cout << endl; 
 } 

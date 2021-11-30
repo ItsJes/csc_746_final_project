@@ -22,13 +22,6 @@
 
 // external definitions for mmul's
 
-void printArray(int arr[], int size) 
-{ 
-    for (int i = 0; i < size; i++) 
-        cout << arr[i] << " "; 
-    cout << endl; 
-} 
-
 /* The benchmarking program */
 int main(int argc, char** argv) 
 {
