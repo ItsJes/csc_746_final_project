@@ -18,6 +18,11 @@ endif ()
 
 add_executable(quicksort-basic quicksort-basic.cpp)
 add_executable(quicksort-openmp quicksort-openmp.cpp)
+target_link_libraries(quicksort-openmp PRIVATE benchmark ${BLAS_LIBRARIES})
+target_link_options(quicksort-openmp PRIVATE -fopenmp)
+target_compile_features(quicksort-openmp PRIVATE c_std_11 c_restrict)
+target_compile_options(quicksort-openmp PRIVATE -fopenmp -Wall -pedantic -march=native)
+set(BENCHMARK "openmp")
 
 
 
