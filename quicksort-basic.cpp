@@ -66,13 +66,13 @@ int main(int argc, char** argv)
    // std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
     std::vector<int> test_sizes{16384};
 
-    int n_problems = test_sizes.size();
+   // int n_problems = test_sizes.size();
 
     // preallocate memory buffers for all problems: assume the last number in test_sizes is the largest
 
     // allocate memory for 2 NxN matrices and 4 Nx1 vectors
 
-    int max_size = test_sizes[n_problems-1];
+   // int max_size = test_sizes[n_problems-1];
 
 
            // load up matrics with some random numbers
