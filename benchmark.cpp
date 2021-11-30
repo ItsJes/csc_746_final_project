@@ -56,7 +56,7 @@ int main(int argc, char** argv)
     {
         printf("Working on problem size N=%d \n", n);
 
-        std::vector<unsigned long long> vec(size,0);
+        std::vector<unsigned long long> vec(n,0);
   
         srand(time(0));
   

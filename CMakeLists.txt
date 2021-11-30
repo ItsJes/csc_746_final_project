@@ -25,13 +25,6 @@ target_compile_options(benchmark-basic PRIVATE -Wall -pedantic -march=native)
 set(BENCHMARK "basic")
 configure_file(job.in job-${BENCHMARK})
 
-add_executable(benchmark-blas dgemv-blas.cpp)
-target_link_libraries(benchmark-blas PRIVATE benchmark ${BLAS_LIBRARIES})
-target_compile_features(benchmark-blas PRIVATE c_std_11 c_restrict)
-target_compile_options(benchmark-blas PRIVATE -Wall -pedantic -march=native)
-set(BENCHMARK "blas")
-configure_file(job.in job-${BENCHMARK})
-
 add_executable(benchmark-openmp dgemv-openmp.cpp)
 target_link_libraries(benchmark-openmp PRIVATE benchmark ${BLAS_LIBRARIES})
 target_link_options(benchmark-openmp PRIVATE -fopenmp)

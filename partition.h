@@ -5,7 +5,7 @@ void swap(int* a, int* b)
     *b = t;
 }
 
-int partition (int arr[], int low, int high)
+int partition (vector<int>arr, int low, int high)
 {
     int pivot = arr[high];    // pivot
     int i = (low - 1);  // Index of smaller element
