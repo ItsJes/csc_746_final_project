@@ -26,37 +26,34 @@ using namespace std;
     *b = t;
 }
 
-int partition(vector<int> arr, int low, int high)
-{
-    int pivot = arr[high];    // pivot
-    int i = (low - 1);  // Index of smaller element
- 
-    for (int j = low; j <= high- 1; j++)
-    {
-
-        if (arr[j] <= pivot)
-        {
-            i++;
-            swap(&arr[i], &arr[j]);
-        }
-    }
-    swap(&arr[i + 1], &arr[high]);
-    return (i + 1);
+int Partition(vector<int> &v, int low, int high){
+	
+	int pivot = high;
+	int j = low;
+	for(int i = low;i < high; ++i){
+		if(v[i] < v[pivot]){
+			swap(v[i], v[j]);
+			++j;
+		}
+	}
+	swap(v[j], v[pivot]);
+	return j;
+	
 }
  
-void quickSort(vector<int> arr, int low, int high)
+void quickSort(vector<int> &v, int low, int high)
 {
     if (low < high)
     {
-        int index = partition(arr, low, high);
-        quickSort(arr, low, index - 1);
-        quickSort(arr, index + 1, high);
+        int index = Partition(v, low, high);
+        quickSort(v, low, index - 1);
+        quickSort(v, index + 1, high);
     }
 }
-void printArray(vector<int> arr, int size) 
+void printArray(vector<int> &v, int size) 
 { 
     for (int i = 0; i < size; i++) 
-        cout << arr[i] << " "; 
+        cout << v[i] << " "; 
     cout << endl; 
 } 
 

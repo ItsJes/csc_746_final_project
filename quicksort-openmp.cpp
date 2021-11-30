@@ -30,32 +30,29 @@ using namespace std;
     *b = t;
 }
 
-int partition (vector<int>vec, int low, int high)
-{
-    int pivot = vec[high];    // pivot
-    int i = (low - 1);  // Index of smaller element
- 
-    for (int j = low; j <= high- 1; j++)
-    {
-
-        if (vec[j] <= pivot)
-        {
-            i++;
-            swap(&vec[i], &vec[j]);
-        }
-    }
-    swap(&vec[i + 1], &vec[high]);
-    return (i + 1);
+int Partition(vector<int> &v, int low, int high){
+	
+	int pivot = high;
+	int j = low;
+	for(int i = low;i < high; ++i){
+		if(v[i] < v[pivot]){
+			swap(v[i], v[j]);
+			++j;
+		}
+	}
+	swap(v[j], v[pivot]);
+	return j;
+	
 }
 
-void printArray(vector<int>vac, int size) 
+void printArray(vector<int> &vec, int size) 
 { 
     for (int i = 0; i < size; i++) 
         cout << vec[i] << " "; 
     cout << endl; 
 } 
 
-void quickSortOMP(vector<int> vec, int low, int high)
+void quickSortOMP(vector<int> &vec, int low, int high)
 {
       #pragma omp parallel
    {
@@ -66,7 +63,7 @@ void quickSortOMP(vector<int> vec, int low, int high)
    
     if (low < high)
     {
-        int index = partition(arr, low, high);
+        int index = Partition(arr, low, high);
         #pragma omp parallel sections{
            #pragma omp section{
             quickSort(vec, low, index - 1);
@@ -79,7 +76,7 @@ void quickSortOMP(vector<int> vec, int low, int high)
    
 }
 
-void printArray(vector<int> vec, int size) 
+void printArray(vector<int> &vec, int size) 
 { 
     for (int i = 0; i < size; i++) 
         cout << vec[i] << " "; 
