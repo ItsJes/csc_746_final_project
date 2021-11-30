@@ -99,7 +99,7 @@ int main(int argc, char** argv)
 
         std::chrono::duration<double> elapsed = end_time - start_time;
         std::cout << " Vector Sort: " << std::endl;
-        printArray(vec, n - 1);
+       // printArray(vec, n - 1);
         std::cout << " Elapsed time is: " << elapsed.count() << " " << std::endl;
     
     } // end loop over problem sizes
