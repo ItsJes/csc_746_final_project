@@ -11,6 +11,8 @@
 #include <cblas.h>
 #include <string.h>
 
+using namespace std;
+
 /*
  * This routine performs a dgemv operation
  * Y :=  A * X + Y
@@ -24,7 +26,7 @@
     *b = t;
 }
 
-int partition (vector<int>arr, int low, int high)
+int partition(vector<int> arr, int low, int high)
 {
     int pivot = arr[high];    // pivot
     int i = (low - 1);  // Index of smaller element
@@ -42,7 +44,7 @@ int partition (vector<int>arr, int low, int high)
     return (i + 1);
 }
  
-void quickSort(int arr[], int low, int high)
+void quickSort(vector<int> arr, int low, int high)
 {
     if (low < high)
     {
@@ -51,7 +53,7 @@ void quickSort(int arr[], int low, int high)
         quickSort(arr, index + 1, high);
     }
 }
-void printArray(int arr[], int size) 
+void printArray(vector<int> arr, int size) 
 { 
     for (int i = 0; i < size; i++) 
         cout << arr[i] << " "; 

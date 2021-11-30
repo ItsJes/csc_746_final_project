@@ -22,7 +22,7 @@ const char* dgemv_desc = "OpenMP dgemv.";
  * where A is n-by-n matrix stored in row-major format, and X and Y are n by 1 vectors.
  * On exit, A and X maintain their input values.
  */
-
+using namespace std;
  void swap(int* a, int* b)
 {
     int t = *a;
@@ -55,7 +55,7 @@ void printArray(vector<int>vac, int size)
     cout << endl; 
 } 
 
-void quickSortOMP(vector<int>vec, int low, int high)
+void quickSortOMP(vector<int> vec, int low, int high)
 {
       #pragma omp parallel
    {
@@ -79,7 +79,7 @@ void quickSortOMP(vector<int>vec, int low, int high)
    
 }
 
-void printArray(vector<int>vec, int size) 
+void printArray(vector<int> vec, int size) 
 { 
     for (int i = 0; i < size; i++) 
         cout << vec[i] << " "; 
