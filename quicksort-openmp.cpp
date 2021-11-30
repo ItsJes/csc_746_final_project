@@ -63,13 +63,13 @@ void quickSortOMP(vector<int> &vec, int low, int high)
    
     if (low < high)
     {
-        int index = Partition(arr, low, high);
+        int index = Partition(vec, low, high);
         #pragma omp parallel sections{
            #pragma omp section{
-            quickSort(vec, low, index - 1);
+            quickSortOMP(vec, low, index - 1);
            }
            #pragma omp section{
-            quickSort(vec, index + 1, high);
+            quickSortOMP(vec, index + 1, high);
            }
         }
     }
