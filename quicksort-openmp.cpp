@@ -131,7 +131,8 @@ int main(int argc, char** argv)
         std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration<double> elapsed = end_time - start_time;
-        std::cout << " Vector Sort: " << printArray(vec, n - 1)  << " " << std::endl;
+        std::cout << " Vector Sort: " << std::endl;
+        printArray(vec, n - 1);
         std::cout << " Elapsed time is: " << elapsed.count() << " " << std::endl;
     
     } // end loop over problem sizes
