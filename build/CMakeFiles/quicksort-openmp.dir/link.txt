@@ -1,0 +1,1 @@
+/opt/cray/pe/craype/2.6.2/bin/CC -O3 -DNDEBUG -fopenmp CMakeFiles/quicksort-openmp.dir/quicksort-openmp.cpp.o -o quicksort-openmp 

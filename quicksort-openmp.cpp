@@ -57,7 +57,7 @@ void printArray(vector<unsigned long long> &v, int size)
 
 void quickSortOMP(vector<unsigned long long> &v, int low, int high)
 {
-   /* 
+  /*  
    #pragma omp parallel
    {
       int nthreads = omp_get_num_threads();
@@ -99,8 +99,8 @@ int main(int argc, char** argv)
     std::cout << std::fixed << std::setprecision(10);
 
     //std::vector<int> test_sizes{64, 128, 256, 512, 1024, 2048};
-   // std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
-   std::vector<int> test_sizes{16384};
+    std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
+ //  std::vector<int> test_sizes{16384};
 
     //int n_problems = test_sizes.size();
 
