@@ -1,0 +1,1 @@
+/opt/cray/pe/craype/2.6.2/bin/CC -O3 -DNDEBUG CMakeFiles/quicksort-basic.dir/quicksort-basic.cpp.o -o quicksort-basic 

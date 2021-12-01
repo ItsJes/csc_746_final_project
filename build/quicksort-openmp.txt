@@ -1,0 +1,105 @@
+Working on problem size N=1024 
+ Vector Sort: 
+ Elapsed time is: 0.0033511600 
+Working on problem size N=2048 
+ Vector Sort: 
+ Elapsed time is: 0.0058285730 
+Working on problem size N=4096 
+ Vector Sort: 
+ Elapsed time is: 0.0116266050 
+Working on problem size N=8192 
+ Vector Sort: 
+ Elapsed time is: 0.0232193800 
+Working on problem size N=16384 
+ Vector Sort: 
+ Elapsed time is: 0.0464148700 
+Working on problem size N=1024 
+ Vector Sort: 
+ Elapsed time is: 0.0031133580 
+Working on problem size N=2048 
+ Vector Sort: 
+ Elapsed time is: 0.0037374140 
+Working on problem size N=4096 
+ Vector Sort: 
+ Elapsed time is: 0.0066954900 
+Working on problem size N=8192 
+ Vector Sort: 
+ Elapsed time is: 0.0220959800 
+Working on problem size N=16384 
+ Vector Sort: 
+ Elapsed time is: 0.0252543990 
+Working on problem size N=1024 
+ Vector Sort: 
+ Elapsed time is: 0.0037436130 
+Working on problem size N=2048 
+ Vector Sort: 
+ Elapsed time is: 0.0036145230 
+Working on problem size N=4096 
+ Vector Sort: 
+ Elapsed time is: 0.0107186470 
+Working on problem size N=8192 
+ Vector Sort: 
+ Elapsed time is: 0.0187890700 
+Working on problem size N=16384 
+ Vector Sort: 
+ Elapsed time is: 0.0320832010 
+Working on problem size N=1024 
+ Vector Sort: 
+ Elapsed time is: 0.0038405650 
+Working on problem size N=2048 
+ Vector Sort: 
+ Elapsed time is: 0.0050435450 
+Working on problem size N=4096 
+ Vector Sort: 
+ Elapsed time is: 0.0085519980 
+Working on problem size N=8192 
+ Vector Sort: 
+ Elapsed time is: 0.0178198620 
+Working on problem size N=16384 
+ Vector Sort: 
+ Elapsed time is: 0.0370831450 
+Working on problem size N=1024 
+ Vector Sort: 
+ Elapsed time is: 0.0058426220 
+Working on problem size N=2048 
+ Vector Sort: 
+ Elapsed time is: 0.0051979970 
+Working on problem size N=4096 
+ Vector Sort: 
+ Elapsed time is: 0.0065717700 
+Working on problem size N=8192 
+ Vector Sort: 
+ Elapsed time is: 0.0214771550 
+Working on problem size N=16384 
+ Vector Sort: 
+ Elapsed time is: 0.0266216710 
+Working on problem size N=1024 
+ Vector Sort: 
+ Elapsed time is: 0.0077124500 
+Working on problem size N=2048 
+ Vector Sort: 
+ Elapsed time is: 0.0045152010 
+Working on problem size N=4096 
+ Vector Sort: 
+ Elapsed time is: 0.0114220940 
+Working on problem size N=8192 
+ Vector Sort: 
+ Elapsed time is: 0.0214158640 
+Working on problem size N=16384 
+ Vector Sort: 
+ Elapsed time is: 0.0320543800 
+Working on problem size N=1024 
+ Vector Sort: 
+ Elapsed time is: 0.0122637210 
+Working on problem size N=2048 
+ Vector Sort: 
+ Elapsed time is: 0.0048605840 
+Working on problem size N=4096 
+ Vector Sort: 
+ Elapsed time is: 0.0118157870 
+Working on problem size N=8192 
+ Vector Sort: 
+ Elapsed time is: 0.0187969000 
+Working on problem size N=16384 
+ Vector Sort: 
+ Elapsed time is: 0.0435001840 

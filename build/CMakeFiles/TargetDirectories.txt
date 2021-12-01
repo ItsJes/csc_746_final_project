@@ -1,0 +1,4 @@
+/global/homes/i/itsjes/csc_746_final_project/build/CMakeFiles/rebuild_cache.dir
+/global/homes/i/itsjes/csc_746_final_project/build/CMakeFiles/edit_cache.dir
+/global/homes/i/itsjes/csc_746_final_project/build/CMakeFiles/quicksort-basic.dir
+/global/homes/i/itsjes/csc_746_final_project/build/CMakeFiles/quicksort-openmp.dir
