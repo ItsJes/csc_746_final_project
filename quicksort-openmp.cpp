@@ -70,11 +70,11 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
     {
         int index = Partition(v, low, high);
 
-           #pragma omp task shared(v) if(high - low > TASK_SIZE)
+           #pragma omp task shared(v)
            {
             quickSortOMP(v, low, index - 1);
            }
-           #pragma omp task shared(v) if(high - low > TASK_SIZE)
+           #pragma omp task shared(v)
            {
             quickSortOMP(v, index + 1, high);
            }
