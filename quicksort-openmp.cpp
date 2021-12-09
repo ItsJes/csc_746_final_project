@@ -33,7 +33,6 @@ int Partition(vector<unsigned long long> &v, int low, int high)
 	
 	int pivot = high;
 	int j = low;
-    #pragma omp parallel for
         for(int i = low;i < high; ++i)
         {
             if(v[i] < v[pivot])
@@ -66,7 +65,7 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
       int thread_id = omp_get_thread_num();
       printf("Hello world: thread %d of %d checking in. \n", thread_id, nthreads);
    }
-   
+   /*
     if (low < high)
     {
         int index = Partition(v, low, high);
@@ -83,6 +82,42 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
            }
         }
     
+    }
+    */
+
+       // create a stack of `std::pairs` for storing subarray start and end index
+    stack<pair<int, int>> s;
+ 
+    // get the starting and ending index of the given array
+    int start = low;
+    int end = high;
+ 
+    // push the start and end index of the array into the stack
+    s.push(make_pair(start, end));
+ 
+    // loop till stack is empty
+    #pragma omp parallel for
+    for(int i = end; i >= 0; i--)
+    {
+        // remove top pair from the list and get subarray starting
+        // and ending indices
+        start = s.top().first, end = s.top().second;
+        s.pop();
+ 
+        // rearrange elements across pivot
+        int pivot = Partition(v, start, end);
+ 
+        // push subarray indices containing elements that are
+        // less than the current pivot to stack
+        if (pivot - 1 > start) {
+            s.push(make_pair(start, pivot - 1));
+        }
+ 
+        // push subarray indices containing elements that are
+        // more than the current pivot to stack
+        if (pivot + 1 < end) {
+            s.push(make_pair(pivot + 1, end));
+        }
     }
 }
 /*
