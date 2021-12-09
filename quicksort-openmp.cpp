@@ -34,7 +34,6 @@ int Partition(vector<unsigned long long> &v, int low, int high)
 	int pivot = high;
 	int j = low;
     #pragma omp parallel for
-    {
         for(int i = low;i < high; ++i)
         {
             if(v[i] < v[pivot])
@@ -43,7 +42,7 @@ int Partition(vector<unsigned long long> &v, int low, int high)
                 ++j;
             }
         }
-    }
+    
 	swap(v[j], v[pivot]);
 	return j;
 	
