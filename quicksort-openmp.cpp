@@ -86,42 +86,22 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
     }
     */
 
-       // create a stack of `std::pairs` for storing subarray start and end index
-    // Create an auxiliary stack
-    std::vector<int> stack;
- 
-    // initialize top of stack
-    int top = -1;
- 
-    // push initial values of l and h to stack
-    stack[++top] = low;
-    stack[++top] = high;
- 
-    // Keep popping from stack while is not empty
-    #pragma omp parallel
-    while (top >= 0) {
-        // Pop h and l
-        high = stack[top--];
-        low = stack[top--];
- 
-        // Set pivot element at its correct position
-        // in sorted array
+       if (low < high)
+    {
         int p = Partition(v, low, high);
- 
-        // If there are elements on left side of pivot,
-        // then push left side to stack
-        if (p - 1 > low) {
-            stack[++top] = low;
-            stack[++top] = p - 1;
-        }
- 
-        // If there are elements on right side of pivot,
-        // then push right side to stack
-        if (p + 1 < high) {
-            stack[++top] = p + 1;
-            stack[++top] = high;
-        }
+        
+           #pragma omp task default(none) firstprivate(v,low,p)
+           {
+            quickSortOMP(v, low, index - 1);
+           }
+           #pragma omp task default(none) firstprivate(v,high,p)
+           {
+            quickSortOMP(v, index + 1, high);
+           }
+        
+    
     }
+    
 }
 /*
 void printArray(vector<int> &v, int size) 
@@ -167,8 +147,13 @@ int main(int argc, char** argv)
 
         // insert start timer code here
         std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
-
-        quickSortOMP(vec, 0, n - 1);
+        #pragma omp parallel default(none) shared(a,nelements)
+        {
+            #pragma omp single nowait
+            {
+                quickSortOMP(vec, 0, n - 1);
+            }
+        }
      
  
         std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
