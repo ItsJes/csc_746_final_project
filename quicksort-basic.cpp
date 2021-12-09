@@ -57,11 +57,9 @@ void printArray(vector<unsigned long long> &v, int size)
     cout << endl; 
 } 
 
-/* The benchmarking program */
+
 int main(int argc, char** argv) 
 {
-   // std::cout << "Description:\t" << dgemv_desc << std::endl << std::endl;
-
     //std::vector<int> test_sizes{64, 128, 256, 512, 1024, 2048};
     std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
   //  std::vector<int> test_sizes{16384};

@@ -13,6 +13,7 @@
 
 
 const char* dgemv_desc = "OpenMP dgemv.";
+#define TASK_SIZE 100
 
 /*
  * This routine performs a dgemv operation
@@ -57,11 +58,7 @@ void printArray(vector<unsigned long long> &v, int size)
 
 void quickSortOMP(vector<unsigned long long> &v, int low, int high)
 {
-<<<<<<< HEAD
     
-=======
-  /*  
->>>>>>> 5cc57b3389eaa0e88c7f1f02185fb33a0b4da4fe
    #pragma omp parallel
    {
       int nthreads = omp_get_num_threads();
@@ -72,21 +69,21 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
     if (low < high)
     {
         int index = Partition(v, low, high);
-        #pragma omp parallel sections
-        {
-           #pragma omp section
+
+           #pragma omp task shared(a) if(high - low > TASK_SIZE)
            {
             quickSortOMP(v, low, index - 1);
            }
-           #pragma omp section
+           #pragma omp task shared(a) if(high - low > TASK_SIZE)
            {
             quickSortOMP(v, index + 1, high);
            }
         }
     }
+    
    
 }
-
+/*
 void printArray(vector<int> &v, int size) 
 { 
     for (int i = 0; i < size; i++){
@@ -94,7 +91,7 @@ void printArray(vector<int> &v, int size)
     } 
     cout << endl; 
 } 
-
+*/
 /* The benchmarking program */
 int main(int argc, char** argv) 
 {
@@ -130,8 +127,11 @@ int main(int argc, char** argv)
 
         // insert start timer code here
         std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
-
-        quickSortOMP(vec, 0, n - 1);
+        #pragma omp parallel
+        {
+             #pragma omp single
+             quickSortOMP(vec, 0, n - 1);
+        }
 
         std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
 
