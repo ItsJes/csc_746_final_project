@@ -79,9 +79,6 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
             quickSortOMP(v, index + 1, high);
            }
         }
-    }
-    
-   
 }
 /*
 void printArray(vector<int> &v, int size) 
