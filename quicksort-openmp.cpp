@@ -86,19 +86,16 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
     }
     */
 
-       if (low < high)
+    if (low < high)
     {
         int p = Partition(v, low, high);
-
-           omp_set_num_threads( 2 );
-           #pragma omp task default(none) firstprivate(v,low,p)
-           {
-            quickSortOMP(v, low, p - 1);
-           }
-           #pragma omp task default(none) firstprivate(v,high,p)
-           {
-            quickSortOMP(v, p + 1, high);
-           }
+        omp_set_num_threads( 4 );
+        #pragma omp task default(none) firstprivate(v,low,p)
+             quickSortOMP(v, low, p - 1);
+        #pragma omp taskwait
+        #pragma omp task default(none) firstprivate(v,high,p)
+             quickSortOMP(v, p + 1, high);
+        #pragma omp taskwait
         
     
     }
