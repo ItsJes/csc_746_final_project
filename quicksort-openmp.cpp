@@ -82,11 +82,11 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
         }
         */
 
-           #pragma omp task shared(v) firstprivate(low,index)
+           #pragma omp task default(none) firstprivate(v,low,index)
            {
             quickSortOMP(v, low, index - 1);
            }
-           #pragma omp task shared(v) firstprivate(high,index)
+          #pragma omp task default(none) firstprivate(v,high,index)
            {
             quickSortOMP(v, index + 1, high);
            }
