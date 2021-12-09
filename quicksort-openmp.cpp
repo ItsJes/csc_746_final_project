@@ -109,7 +109,7 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
         s.pop();
  
         // rearrange elements across pivot
-        int pivot = partition(v, start, end);
+        int pivot = Partition(v, start, end);
  
         // push subarray indices containing elements that are
         // less than the current pivot to stack
