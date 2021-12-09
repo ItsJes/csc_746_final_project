@@ -88,7 +88,8 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
 
        // create a stack of `std::pairs` for storing subarray start and end index
     // Create an auxiliary stack
-    int stack[high - low + 1];
+    int buffer = (int*) malloc (high - low + 1);
+    int stack[buffer];
  
     // initialize top of stack
     int top = -1;
@@ -100,7 +101,7 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
     // Keep popping from stack while is not empty
        #pragma omp parallel
        #pragma omp for  
-        for(int i = top; top >= 0;) {
+        for(int i = top; top >= 0; i--) {
         // Pop h and l
         high = stack[top--];
         low = stack[top--];
@@ -111,7 +112,7 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
  
         // If there are elements on left side of pivot,
         // then push left side to stack
-        if (p - 1 > l) {
+        if (p - 1 > low) {
             stack[++top] = low;
             stack[++top] = p - 1;
         }
