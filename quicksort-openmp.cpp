@@ -105,7 +105,8 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
         // remove top pair from the list and get subarray starting
         // and ending indices
         #pragma omp atomic read
-        start = s.top().first, end = s.top().second;
+        start = s.top().first;
+        end = s.top().second;
         s.pop();
  
         // rearrange elements across pivot
