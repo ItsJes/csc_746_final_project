@@ -10,6 +10,7 @@
 #include <vector>
 #include <cmath> // For: fabs
 #include <cblas.h>
+#include <stack>
 
 
 const char* dgemv_desc = "OpenMP dgemv.";
