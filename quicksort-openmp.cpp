@@ -88,8 +88,7 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
 
        // create a stack of `std::pairs` for storing subarray start and end index
     // Create an auxiliary stack
-    int buffer = (int*) malloc (high - low + 1);
-    std::vector<int> stack{buffer};
+    std::vector<int> stack;
  
     // initialize top of stack
     int top = -1;
