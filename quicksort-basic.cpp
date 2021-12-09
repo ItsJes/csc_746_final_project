@@ -61,8 +61,8 @@ void printArray(vector<unsigned long long> &v, int size)
 int main(int argc, char** argv) 
 {
     //std::vector<int> test_sizes{64, 128, 256, 512, 1024, 2048};
-    std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
-  //  std::vector<int> test_sizes{16384};
+  //  std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
+    std::vector<int> test_sizes{16384};
 
    // int n_problems = test_sizes.size();
 
