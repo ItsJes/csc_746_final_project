@@ -88,39 +88,39 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
 
        // create a stack of `std::pairs` for storing subarray start and end index
     // Create an auxiliary stack
-    std::vector<int> stack;
+    stack<pair<int, int>> s;
  
-    // initialize top of stack
-    int top = -1;
+    // get the starting and ending index of the given array
+    int start = low;
+    int end = high;
  
-    // push initial values of l and h to stack
-    stack[++top] = low;
-    stack[++top] = high;
+    // push the start and end index of the array into the stack
+    s.push(make_pair(start, end));
  
-    // Keep popping from stack while is not empty
-       #pragma omp parallel
-       #pragma omp for  
-        for(int i = v.size(); i >= 0; i--) {
-        // Pop h and l
-        high = stack[top--];
-        low = stack[top--];
+    // loop till stack is empty
+
+    #pragma omp parallel
+    while (!s.empty())
+    {
+        // remove top pair from the list and get subarray starting
+        // and ending indices
+        #pragma omp atomic read
+        start = s.top().first, end = s.top().second;
+        s.pop();
  
-        // Set pivot element at its correct position
-        // in sorted array
-        int p = Partition(v, low, high);
+        // rearrange elements across pivot
+        int pivot = partition(v, start, end);
  
-        // If there are elements on left side of pivot,
-        // then push left side to stack
-        if (p - 1 > low) {
-            stack[++top] = low;
-            stack[++top] = p - 1;
+        // push subarray indices containing elements that are
+        // less than the current pivot to stack
+        if (pivot - 1 > start) {
+            s.push(make_pair(start, pivot - 1));
         }
  
-        // If there are elements on right side of pivot,
-        // then push right side to stack
-        if (p + 1 < high) {
-            stack[++top] = p + 1;
-            stack[++top] = high;
+        // push subarray indices containing elements that are
+        // more than the current pivot to stack
+        if (pivot + 1 < end) {
+            s.push(make_pair(pivot + 1, end));
         }
     }
 }
