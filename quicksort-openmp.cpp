@@ -33,14 +33,17 @@ int Partition(vector<unsigned long long> &v, int low, int high)
 	
 	int pivot = high;
 	int j = low;
-	for(int i = low;i < high; ++i)
+    #pragma omp parallel for
     {
-		if(v[i] < v[pivot])
+        for(int i = low;i < high; ++i)
         {
-			swap(v[i], v[j]);
-			++j;
-		}
-	}
+            if(v[i] < v[pivot])
+            {
+                swap(v[i], v[j]);
+                ++j;
+            }
+        }
+    }
 	swap(v[j], v[pivot]);
 	return j;
 	
@@ -68,7 +71,7 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
     if (low < high)
     {
         int index = Partition(v, low, high);
-        /*
+        
         #pragma omp parallel sections
         {
            #pragma omp section
@@ -80,20 +83,8 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
             quickSortOMP(v, index + 1, high);
            }
         }
-        */
-
-           #pragma omp task default(none) firstprivate(v,low,index)
-           {
-            quickSortOMP(v, low, index - 1);
-           }
-          #pragma omp task default(none) firstprivate(v,high,index)
-           {
-            quickSortOMP(v, index + 1, high);
-           }
-        
-        #pragma omp taskwait
     
-    }   
+    }
 }
 /*
 void printArray(vector<int> &v, int size) 
