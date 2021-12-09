@@ -13,7 +13,6 @@
 
 
 const char* dgemv_desc = "OpenMP dgemv.";
-#define TASK_SIZE 100
 
 /*
  * This routine performs a dgemv operation
@@ -46,7 +45,7 @@ int Partition(vector<unsigned long long> &v, int low, int high)
 	return j;
 	
 }
-/*
+
 void printArray(vector<unsigned long long> &v, int size) 
 { 
     for (int i = 0; i < size; i++)
@@ -55,10 +54,10 @@ void printArray(vector<unsigned long long> &v, int size)
     }
     cout << endl; 
 } 
-*/
+
 void quickSortOMP(vector<unsigned long long> &v, int low, int high)
 {
-    
+      
    #pragma omp parallel
    {
       int nthreads = omp_get_num_threads();
@@ -69,16 +68,19 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
     if (low < high)
     {
         int index = Partition(v, low, high);
-
-           #pragma omp task shared(v)
+        #pragma omp parallel sections
+        {
+           #pragma omp section
            {
             quickSortOMP(v, low, index - 1);
            }
-           #pragma omp task shared(v)
+           #pragma omp section
            {
             quickSortOMP(v, index + 1, high);
            }
         }
+    }
+   
 }
 /*
 void printArray(vector<int> &v, int size) 
@@ -98,7 +100,7 @@ int main(int argc, char** argv)
 
     //std::vector<int> test_sizes{64, 128, 256, 512, 1024, 2048};
    // std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
-    std::vector<int> test_sizes{16384};
+      std::vector<int> test_sizes{32};
 
     //int n_problems = test_sizes.size();
 
@@ -124,11 +126,8 @@ int main(int argc, char** argv)
 
         // insert start timer code here
         std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
-        #pragma omp parallel
-        {
-             #pragma omp single
-             quickSortOMP(vec, 0, n - 1);
-        }
+
+        quickSortOMP(vec, 0, n - 1);
 
         std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
 
