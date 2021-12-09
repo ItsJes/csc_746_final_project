@@ -68,6 +68,7 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
     if (low < high)
     {
         int index = Partition(v, low, high);
+        /*
         #pragma omp parallel sections
         {
            #pragma omp section
@@ -79,6 +80,18 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
             quickSortOMP(v, index + 1, high);
            }
         }
+        */
+
+           #pragma omp task firstprivate(arr,low,index)
+           {
+            quickSortOMP(v, low, index - 1);
+           }
+           #pragma omp task firstprivate(arr,high,index)
+           {
+            quickSortOMP(v, index + 1, high);
+           }
+        }
+
     }
    
 }
@@ -126,9 +139,10 @@ int main(int argc, char** argv)
 
         // insert start timer code here
         std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
-
+#pragma omp parallel
+ {
         quickSortOMP(vec, 0, n - 1);
-
+ }
         std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration<double> elapsed = end_time - start_time;
