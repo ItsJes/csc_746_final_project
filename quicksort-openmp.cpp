@@ -89,7 +89,8 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
        if (low < high)
     {
         int p = Partition(v, low, high);
-        
+
+           omp_set_num_threads( 2 );
            #pragma omp task default(none) firstprivate(v,low,p)
            {
             quickSortOMP(v, low, p - 1);
