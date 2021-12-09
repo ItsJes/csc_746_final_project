@@ -100,7 +100,7 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
     // Keep popping from stack while is not empty
        #pragma omp parallel
        #pragma omp for  
-        for(int i = top; i >= 0; i--) {
+        for(int i = v.size(); i >= 0; i--) {
         // Pop h and l
         high = stack[top--];
         low = stack[top--];
