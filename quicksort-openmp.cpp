@@ -129,13 +129,10 @@ int main(int argc, char** argv)
 
         // insert start timer code here
         std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
-#pragma omp parallel default(none) shared(vec,n)
- {
-     #pragma omp single nowait
-     {
+
         quickSortOMP(vec, 0, n - 1);
-     }
- }
+     
+ 
         std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration<double> elapsed = end_time - start_time;
