@@ -53,14 +53,14 @@ void printArray(vector<unsigned long long> &v, int size)
 
 void quickSortOMP(vector<unsigned long long> &v, int low, int high)
 {
-      
+      /*
    #pragma omp parallel
    {
       int nthreads = omp_get_num_threads();
       int thread_id = omp_get_thread_num();
       printf("Hello world: thread %d of %d checking in. \n", thread_id, nthreads);
    }
-   
+   */
     if (low < high)
     {
         int p = Partition(v, low, high);
