@@ -66,26 +66,26 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
       int thread_id = omp_get_thread_num();
       printf("Hello world: thread %d of %d checking in. \n", thread_id, nthreads);
    }
-   /*
+   
     if (low < high)
     {
-        int index = Partition(v, low, high);
+        int p = Partition(v, low, high);
         
         #pragma omp parallel sections
         {
            #pragma omp section
            {
-            quickSortOMP(v, low, index - 1);
+            quickSortOMP(v, low, p - 1);
            }
            #pragma omp section
            {
-            quickSortOMP(v, index + 1, high);
+            quickSortOMP(v, p + 1, high);
            }
         }
     
     }
-    */
-
+    
+/*  Quicksort using task
     if (low < high)
     {
         int p = Partition(v, low, high);
@@ -99,7 +99,36 @@ void quickSortOMP(vector<unsigned long long> &v, int low, int high)
         
     
     }
-    
+    */
+
+
+/* Iterative version on Quicksort
+    std::vector<int> s;
+ 
+    int top = -1;
+    s[++top] = low;
+    s[++top] = high;
+
+    #pragma omp parallel
+    while (top >= 0) 
+    {
+        
+        high = s[top--];
+        low = s[top--];
+ 
+        int p = Partition(v, low, high);
+ 
+        if (p - 1 > low) {
+            s[++top] = low;
+            s[++top] = p - 1;
+        }
+
+        if (p + 1 < high) {
+            s[++top] = p + 1;
+            s[++top] = high;
+        }
+    }
+    */
 }
 /*
 void printArray(vector<int> &v, int size) 
@@ -145,15 +174,9 @@ int main(int argc, char** argv)
 
         // insert start timer code here
         std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
-        #pragma omp parallel default(none) shared(vec,n)
-        {
-            #pragma omp single nowait
-            {
-                quickSortOMP(vec, 0, n - 1);
-            }
-        }
+
+        quickSortOMP(vec, 0, n - 1);
      
- 
         std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration<double> elapsed = end_time - start_time;
