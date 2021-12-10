@@ -1,15 +1,15 @@
 Working on problem size N=1024 
  Vector Sort: 
- Elapsed time is: 0.0001337010 
+ Elapsed time is: 0.0001232700 
 Working on problem size N=2048 
  Vector Sort: 
- Elapsed time is: 0.0002601020 
+ Elapsed time is: 0.0003408590 
 Working on problem size N=4096 
  Vector Sort: 
- Elapsed time is: 0.0005916360 
+ Elapsed time is: 0.0005676080 
 Working on problem size N=8192 
  Vector Sort: 
- Elapsed time is: 0.0012625620 
+ Elapsed time is: 0.0013688360 
 Working on problem size N=16384 
  Vector Sort: 
- Elapsed time is: 0.0027194250 
+ Elapsed time is: 0.0028798010 

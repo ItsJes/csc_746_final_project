@@ -235,8 +235,21 @@ CMakeFiles/quicksort-openmp.dir/quicksort-openmp.cpp.o: ../quicksort-openmp.cpp 
   /opt/gcc/8.3.0/snos/include/g++/bits/random.tcc \
   /opt/gcc/8.3.0/snos/include/g++/numeric \
   /opt/gcc/8.3.0/snos/include/g++/bits/stl_numeric.h \
-  /opt/cray/pe/libsci/19.06.1/GNU/8.1/x86_64/include/cblas.h
+  /opt/cray/pe/libsci/19.06.1/GNU/8.1/x86_64/include/cblas.h \
+  /opt/gcc/8.3.0/snos/include/g++/stack \
+  /opt/gcc/8.3.0/snos/include/g++/deque \
+  /opt/gcc/8.3.0/snos/include/g++/bits/stl_deque.h \
+  /opt/gcc/8.3.0/snos/include/g++/bits/deque.tcc \
+  /opt/gcc/8.3.0/snos/include/g++/bits/stl_stack.h
 
+
+/opt/gcc/8.3.0/snos/include/g++/bits/stl_stack.h:
+
+/opt/gcc/8.3.0/snos/include/g++/bits/deque.tcc:
+
+/opt/gcc/8.3.0/snos/include/g++/deque:
+
+/opt/gcc/8.3.0/snos/include/g++/stack:
 
 /opt/gcc/8.3.0/snos/include/g++/bits/stl_numeric.h:
 
@@ -513,6 +526,8 @@ CMakeFiles/quicksort-openmp.dir/quicksort-openmp.cpp.o: ../quicksort-openmp.cpp 
 /usr/include/bits/types.h:
 
 /usr/include/bits/types/clock_t.h:
+
+/opt/gcc/8.3.0/snos/include/g++/bits/stl_deque.h:
 
 /usr/include/bits/libc-header-start.h:
 
