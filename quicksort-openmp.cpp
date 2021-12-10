@@ -15,12 +15,6 @@
 
 const char* dgemv_desc = "OpenMP dgemv.";
 
-/*
- * This routine performs a dgemv operation
- * Y :=  A * X + Y
- * where A is n-by-n matrix stored in row-major format, and X and Y are n by 1 vectors.
- * On exit, A and X maintain their input values.
- */
 using namespace std;
  void swap(int* a, int* b)
 {
@@ -139,28 +133,16 @@ void printArray(vector<int> &v, int size)
     cout << endl; 
 } 
 */
-/* The benchmarking program */
+
 int main(int argc, char** argv) 
 {
-   // std::cout << "Description:\t" << dgemv_desc << std::endl << std::endl;
 
     std::cout << std::fixed << std::setprecision(10);
 
     //std::vector<int> test_sizes{64, 128, 256, 512, 1024, 2048};
-   // std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
-      std::vector<int> test_sizes{32};
+    std::vector<int> test_sizes{1024, 2048, 4096, 8192, 16384};
+     // std::vector<int> test_sizes{32};
 
-    //int n_problems = test_sizes.size();
-
-    // preallocate memory buffers for all problems: assume the last number in test_sizes is the largest
-
-    // allocate memory for 2 NxN matrices and 4 Nx1 vectors
-
-    //int max_size = test_sizes[n_problems-1];
-
-
-           // load up matrics with some random numbers
-    /* For each test size */
 
     for (int n : test_sizes) 
     {
@@ -172,7 +154,6 @@ int main(int argc, char** argv)
   
         generate(vec.begin(), vec.end(), rand);
 
-        // insert start timer code here
         std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
 
         quickSortOMP(vec, 0, n - 1);
@@ -181,7 +162,6 @@ int main(int argc, char** argv)
 
         std::chrono::duration<double> elapsed = end_time - start_time;
         std::cout << " Vector Sort: " << std::endl;
-       // printArray(vec, n - 1);
         std::cout << " Elapsed time is: " << elapsed.count() << " " << std::endl;
     
     } // end loop over problem sizes
